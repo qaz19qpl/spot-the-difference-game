@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lantern Market — Spot the Difference</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="hud-left">
+      <h1>Lantern Market <span>· Spot the Difference</span></h1>
+      <div id="levelName">Level 1 — Lantern Market at Dusk</div>
+    </div>
+    <div class="hud-mid">
+      <div class="counter" id="foundCounter" title="Differences found / total">Found <b id="foundCount">0</b> / <b id="totalCount">7</b> · <span id="remainCount">7 remain</span></div>
+      <div class="timerbar"><div id="timerFill"></div><span id="timerText">3:00</span></div>
+    </div>
+    <div class="hud-right">
+      <div class="score">Score <b id="scoreValue">0</b></div>
+      <div class="combo" id="comboValue"></div>
+      <div class="hud-buttons">
+        <button id="hintBtn" type="button" title="Hint (H) — reveals one difference for a moment">💡 Hint <span id="hintCount">3</span></button>
+        <button id="muteBtn" type="button" title="Sound on/off (M)">🔊 Sound</button>
+        <button id="restartBtn" type="button" title="Restart this level (R)">↻ Restart</button>
+        <button id="menuBtn" type="button" title="Level select (Esc)">☰ Levels</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="boards">
+    <figure class="panel" id="panelAFig">
+      <canvas id="panelA" width="560" height="560" aria-label="Left picture: the original scene"></canvas>
+      <figcaption>Original</figcaption>
+    </figure>
+    <div id="vsBadge">VS</div>
+    <figure class="panel" id="panelBFig">
+      <canvas id="panelB" width="560" height="560" aria-label="Right picture: the changed scene"></canvas>
+      <figcaption>Changed — find what moved</figcaption>
+    </figure>
+  </main>
+
+  <footer id="helpbar">
+    <span>Click a difference on either picture · Arrow keys move the crosshair, <kbd>Enter</kbd> marks it, <kbd>Tab</kbd> switches picture</span>
+    <span id="statusLine" role="status" aria-live="polite">Find all 7 differences before the lanterns burn down.</span>
+  </footer>
+
+  <div id="overlay" class="hidden">
+    <div id="overlayCard"></div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

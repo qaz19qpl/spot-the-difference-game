@@ -1,0 +1,96 @@
+/* Lantern Market — Spot the Difference. Dusk-market theme: deep indigo, warm gold. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #141021 radial-gradient(1200px 700px at 50% -10%, #2b1d4e 0%, #141021 60%);
+  color: #f5ead2;
+  font-family: "Avenir Next", "Segoe UI", Verdana, sans-serif;
+  min-height: 100vh;
+}
+#app { max-width: 1240px; margin: 0 auto; padding: 10px 16px 14px; }
+
+#hud {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 6px 4px 10px; border-bottom: 1px solid rgba(245, 210, 130, 0.25);
+}
+#hud h1 { margin: 0; font-size: 22px; letter-spacing: 0.5px; color: #ffd97a; }
+#hud h1 span { font-size: 14px; color: #cbb98d; font-weight: 400; }
+#levelName { font-size: 13px; color: #e8d9b0; margin-top: 2px; }
+.hud-mid { text-align: center; }
+.counter { font-size: 17px; font-weight: 600; }
+.counter b { color: #ffd97a; }
+.counter #remainCount { color: #ffb08a; font-weight: 700; }
+.timerbar {
+  position: relative; width: 300px; height: 20px; margin-top: 6px;
+  background: #241a3d; border: 1px solid #6b558f; border-radius: 10px; overflow: hidden;
+}
+#timerFill { height: 100%; width: 100%; background: linear-gradient(90deg, #ffb347, #ff7847); transition: width 0.3s linear; }
+#timerFill.low { background: linear-gradient(90deg, #ff5a4e, #d21f3c); }
+#timerText {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+}
+.hud-right { text-align: right; }
+.score { font-size: 15px; }
+.score b { color: #ffd97a; font-size: 19px; }
+.combo { min-height: 18px; font-size: 13px; color: #9be28a; font-weight: 700; }
+.hud-buttons { margin-top: 4px; display: flex; gap: 6px; justify-content: flex-end; }
+button {
+  background: #2c2149; color: #f5ead2; border: 1px solid #6b558f; border-radius: 8px;
+  padding: 6px 10px; font-size: 13px; cursor: pointer;
+}
+button:hover:not(:disabled) { background: #3d2c63; border-color: #ffd97a; }
+button:disabled { opacity: 0.45; cursor: default; }
+
+#boards { display: flex; align-items: flex-start; justify-content: center; gap: 14px; padding-top: 12px; }
+.panel { margin: 0; }
+.panel canvas {
+  display: block; width: 560px; height: 560px; border-radius: 10px;
+  border: 3px solid #4a3566; box-shadow: 0 6px 24px rgba(0,0,0,0.5); cursor: crosshair;
+  background: #1b1430;
+}
+.panel canvas.shake { animation: shake 0.25s; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); } 75% { transform: translateX(-2px); }
+}
+.panel figcaption { text-align: center; font-size: 13px; color: #cbb98d; padding-top: 6px; letter-spacing: 1px; }
+#vsBadge {
+  align-self: center; width: 44px; height: 44px; border-radius: 50%;
+  background: #ff7847; color: #fff; font-weight: 800; display: flex;
+  align-items: center; justify-content: center; font-size: 15px;
+  box-shadow: 0 0 18px rgba(255, 120, 71, 0.6); flex: none;
+}
+#helpbar {
+  display: flex; justify-content: space-between; gap: 16px; padding: 10px 4px 0;
+  font-size: 13px; color: #bfae87;
+}
+#helpbar kbd {
+  background: #2c2149; border: 1px solid #6b558f; border-radius: 4px;
+  padding: 0 5px; font-family: inherit;
+}
+#statusLine { color: #ffd97a; font-weight: 600; }
+
+#overlay {
+  position: fixed; inset: 0; background: rgba(10, 6, 24, 0.78);
+  display: flex; align-items: center; justify-content: center; z-index: 10;
+}
+#overlay.hidden { display: none; }
+#overlayCard {
+  background: #241a3d; border: 2px solid #ffd97a; border-radius: 14px;
+  padding: 28px 34px; max-width: 560px; text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+#overlayCard h2 { margin: 0 0 8px; color: #ffd97a; font-size: 26px; }
+#overlayCard p { margin: 8px 0; font-size: 15px; line-height: 1.5; }
+#overlayCard .big { font-size: 19px; font-weight: 700; color: #fff; }
+#overlayCard .stars { font-size: 30px; letter-spacing: 6px; margin: 6px 0; }
+#overlayCard .level-pick { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+#overlayCard .level-pick button { padding: 10px 14px; font-size: 15px; text-align: left; }
+#overlayCard .level-pick button small { color: #cbb98d; }
+#overlayCard .row { display: flex; gap: 10px; justify-content: center; margin-top: 14px; }
+#overlayCard .row button { padding: 10px 18px; font-size: 15px; }
+@media (max-width: 1220px) {
+  .panel canvas { width: 460px; height: 460px; }
+  #app { max-width: 1020px; }
+}
